@@ -11,6 +11,7 @@ from src.functions import unpickle_model, update_db, run_prediction
 from src.Models import Models
 
 app = Flask(__name__)
+# app._static_folder = '/Users/clayton/github/galvanize/case_studies/flask_fraud_detection/templates/'
 PORT = 5353
 REGISTER_URL = "http://10.3.35.189:5000/register"
 
@@ -46,6 +47,10 @@ def check():
         output = line1
     return output, 200, {'Content-Type': 'text/css; charset=utf-8'}
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('Dashboard.html')
+
 
 def register_for_ping(ip, port):
     registration_data = {'ip': ip, 'port': port}
@@ -56,9 +61,9 @@ if __name__ == '__main__':
 
     # Register for pinging service
     # # ip_address = socket.gethostbyname(socket.gethostname())
-    ip_address = '10.3.35.174'
-    print "attempting to register %s:%d" % (ip_address, PORT)
-    register_for_ping(ip_address, str(PORT))
+    # ip_address = '10.3.35.174'
+    # print "attempting to register %s:%d" % (ip_address, PORT)
+    # register_for_ping(ip_address, str(PORT))
 
     # Start Flask app
     app.run(host='0.0.0.0', port=PORT, debug=True)
