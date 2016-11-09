@@ -14,6 +14,7 @@ db = client.scores
 raw_table = db.raw
 prediction_table = db.predictions
 
+
 def unpickle_model(file_name):
     ''' Unpickle our models
     INPUT: file_name (str)
@@ -23,6 +24,7 @@ def unpickle_model(file_name):
         curr_model = pickle.load(f)
     return curr_model
 
+
 def update_db(jso, prediction, mongo_collection):
     '''Update DB based on objectid. Add in 
     prediction and timestamp.
@@ -31,7 +33,9 @@ def update_db(jso, prediction, mongo_collection):
     '''
     jso['predictions'] = prediction[1]
     jso['time_stamp'] = time.time()
-    mongo_collection.update_one({"_id":jso['object_id']},{"$set": jso}, upsert=True)
+    mongo_collection.update_one({"_id": jso['object_id']}, {
+                                "$set": jso}, upsert=True)
+
 
 def run_prediction(Model, jso):
     '''Run Prediction with our model, do preprocessing also.
@@ -40,6 +44,7 @@ def run_prediction(Model, jso):
     '''
     X = add_features(jso)
     return Model.predict_proba(X)[0]
+
 
 def add_features(jso):
     '''Convert json to df, do preprocessing and add features
@@ -54,6 +59,7 @@ def add_features(jso):
     tyler_features = tyler_clean.clean(df)
 
     df = dp.run_data_processor_1(df, fraud=False)
+
     doug_features = ['previous_payout_sum','name_length','show_map']
     
     features = ['fb_published','has_logo'] + tyler_features + doug_features
