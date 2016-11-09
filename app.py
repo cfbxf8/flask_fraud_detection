@@ -7,7 +7,8 @@ import pandas as pd
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo import errors
-from src.functions import unpickle_model, update_db, run_prediction, dash_data
+from src.functions import unpickle_model, update_db, run_prediction
+from src.dashboard_functions import dash_data
 from src.Models import Models
 
 app = Flask(__name__)
@@ -52,7 +53,7 @@ def check():
 
 @app.route('/dashboard')
 def dashboard():
-	data = dash_data(raw_table)
+    data = dash_data(raw_table)
     return render_template('Dashboard.html', data=data)
 
 
