@@ -7,11 +7,12 @@ import pandas as pd
 from datetime import datetime
 from pymongo import MongoClient
 from pymongo import errors
-from src.functions import unpickle_model, update_db, run_prediction
+from src.functions import unpickle_model, update_db, run_prediction, dash_data
 from src.Models import Models
 
 app = Flask(__name__)
-# app._static_folder = '/Users/clayton/github/galvanize/case_studies/flask_fraud_detection/templates/'
+# app._static_folder =
+# '/Users/clayton/github/galvanize/case_studies/flask_fraud_detection/templates/'
 PORT = 5353
 REGISTER_URL = "http://10.3.35.189:5000/register"
 
@@ -51,7 +52,8 @@ def check():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('Dashboard.html')
+	data = dash_data(raw_table)
+    return render_template('Dashboard.html', data=data)
 
 
 def register_for_ping(ip, port):
