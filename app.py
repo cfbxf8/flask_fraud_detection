@@ -54,7 +54,13 @@ def check():
 @app.route('/dashboard')
 def dashboard():
     data = dash_data(raw_table)
-    return render_template('Dashboard.html', data=data)
+    labels = ["January", "February", "March",
+              "April", "May", "June", "July", "August"]
+    values = [10, 9, 8, 7, 6, 4, 7, 8]
+    colors = ["#F7464A", "#46BFBD", "#FDB45C",
+              "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
+    chart_set = zip(values, labels, colors)
+    return render_template('Dashboard.html', data=data, set=chart_set)
 
 
 def register_for_ping(ip, port):

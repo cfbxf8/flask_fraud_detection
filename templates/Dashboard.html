@@ -40,7 +40,25 @@
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" width="200" height="200">
+              <canvas id="chart" width="200" height="200"></canvas>
+              <script>
+                 var pieData = [
+                          {% for item,label,colors in set %}
+                              {
+                                  value: {{item}},
+                                  label: "{{label}}",
+                                  color : "{{colors}}"
+                              },
+                              {% endfor %}
+                       ];
+
+                 // get bar chart canvas
+                 var mychart = document.getElementById("chart").getContext("2d");
+                 steps = 10
+                 max = 10
+                 // draw pie chart
+                 new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
+              </script>
               <h4>Total Cases</h4>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
