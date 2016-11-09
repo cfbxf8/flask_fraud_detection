@@ -8,6 +8,10 @@ from datetime import datetime
 from pymongo import MongoClient
 from pymongo import errors
 from src.functions import unpickle_model, update_db, run_prediction
+<<<<<<< HEAD
+=======
+from src.dashboard_functions import dash_data
+>>>>>>> bcbe98b6d03e8fc712c85086f625bab43ef1a525
 from src.Models import Models
 from src.dashboard_functions import dash_data
 
@@ -54,7 +58,13 @@ def check():
 @app.route('/dashboard')
 def dashboard():
     data = dash_data(raw_table)
-    return render_template('Dashboard.html', data=data)
+    labels = ["January", "February", "March",
+              "April", "May", "June", "July", "August"]
+    values = [10, 9, 8, 7, 6, 4, 7, 8]
+    colors = ["#F7464A", "#46BFBD", "#FDB45C",
+              "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"]
+    chart_set = zip(values, labels, colors)
+    return render_template('Dashboard.html', data=data, set=chart_set)
 
 
 def register_for_ping(ip, port):
