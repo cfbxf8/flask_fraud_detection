@@ -71,13 +71,15 @@
               </thead>
 
               <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
+                {% for t, s, eid, ci, rfs in data %}
+                  <tr>
+                    <td>{{ t }}</td>
+                    <td>{{ s }}</td>
+                    <td>{{ eid }}</td>
+                    <td>{{ ci }}</td>
+                    <td>{{ rf }}</td>
+                  </tr>
+                {% endfor %}
               </tbody>
 
             </table>

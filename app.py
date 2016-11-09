@@ -24,7 +24,8 @@ model1 = unpickle_model('GradientBoostingClassifier.pkl')
 
 @app.route('/hello')
 def index():
-	return "Hello, World!"
+    return "Hello, World!"
+
 
 @app.route('/score', methods=['POST'])
 def score():
@@ -46,6 +47,7 @@ def check():
     else:
         output = line1
     return output, 200, {'Content-Type': 'text/css; charset=utf-8'}
+
 
 @app.route('/dashboard')
 def dashboard():
