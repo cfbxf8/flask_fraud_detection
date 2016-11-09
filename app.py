@@ -8,12 +8,8 @@ from datetime import datetime
 from pymongo import MongoClient
 from pymongo import errors
 from src.functions import unpickle_model, update_db, run_prediction
-<<<<<<< HEAD
-=======
 from src.dashboard_functions import dash_data
->>>>>>> bcbe98b6d03e8fc712c85086f625bab43ef1a525
 from src.Models import Models
-from src.dashboard_functions import dash_data
 
 app = Flask(__name__)
 # app._static_folder =
