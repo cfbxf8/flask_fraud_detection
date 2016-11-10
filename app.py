@@ -72,9 +72,9 @@ if __name__ == '__main__':
 
     # Register for pinging service
     # # ip_address = socket.gethostbyname(socket.gethostname())
-    ip_address = '10.3.35.174'
-    print "attempting to register %s:%d" % (ip_address, PORT)
-    register_for_ping(ip_address, str(PORT))
+    # ip_address = '10.3.35.174'
+    # print "attempting to register %s:%d" % (ip_address, PORT)
+    # register_for_ping(ip_address, str(PORT))
 
     # Start Flask app
     app.run(host='0.0.0.0', port=PORT, debug=True)
