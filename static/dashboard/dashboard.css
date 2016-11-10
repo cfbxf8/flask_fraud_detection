@@ -103,3 +103,22 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.circle {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	/* width and height can be anything, as long as they're equal */
+}
+
+.red {
+  background: #FF0000
+}
+
+.orange {
+  background: #FFA500
+}
+
+.yellow {
+  background: #FFFF00
+}
