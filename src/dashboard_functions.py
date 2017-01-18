@@ -44,7 +44,7 @@ def dash_data(mongo_collection):
     return small_data.values
 
 def convert_time(one_time):
-    new_time = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime(one_time))
+    new_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(one_time))
     return new_time 
 
 def classify_row(row):
@@ -88,10 +88,10 @@ def check_logo(df):
 
 
 def make_pie_chart(df):
-   counts = df.fraud_class.value_counts()
-   colors = ['g', '#F2B50F', '#FF0000', '#FFA500']
-   plt.pie(counts, labels=counts.index, colors = colors)
-   plt.savefig('/static/thing.jpg')
+    counts = df.fraud_class.value_counts()
+    colors = ['r', '#F2B50F', '#FF0000', '#FF4500']
+    plt.pie(counts, labels=counts.index, colors = colors)
+    plt.savefig('/static/thing.jpg')
 
      
 
